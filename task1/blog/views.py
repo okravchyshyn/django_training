@@ -4,6 +4,7 @@ from django.template import Context, loader
 from django.http import HttpResponseRedirect
 
 from django import forms
+from blog.models import Base, Blogs
 import blog.models as bm
 
 class BlogItem(forms.Form):
@@ -13,7 +14,8 @@ class BlogItem(forms.Form):
 
 # Create your views here.
 def index(request):
-    list = bm.Blogs.objects.all()
+    #list = bm.Blogs.objects.all()
+    list = bm.get_all_items()
     t = loader.get_template('blog/index.html')
     c = Context({
         'msg': "Hello from here",
@@ -23,6 +25,7 @@ def index(request):
 
 
 def add_new(request):
+    print "add_new"
     if request.method == 'POST': # If the form has been submitted...
         # ContactForm was defined in the previous section
         print request.POST
@@ -42,6 +45,7 @@ def add_new(request):
 
 def edit(request, blog_id):
     response = "Edit %s."
+    print "edit"
     (d, t) = bm.get_blog_items(blog_id)
 
     if request.method == 'POST': # If the form has been submitted...
