@@ -1,0 +1,12 @@
+<p>My message: {{ msg }} 	</p>
+
+
+{% if blog_list %}
+    <ul>
+    {% for blog in blog_list %}
+        <li><a href="/blog/{{ blog.blog_tag }}/edit/">{{ blog.blog_desc }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No blogs are available.</p>
+{% endif %}

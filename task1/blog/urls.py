@@ -10,7 +10,7 @@ urlpatterns = [
     # ex: /polls/5/
     url(r'^add_new/$', views.add_new, name='detail'),
     # ex: /polls/5/results/
-    url(r'^(?P<question_id>[0-9]+)/edit/$', views.edit, name='results'),
+    url(r'^(?P<blog_id>[0-9]+)/edit/$', views.edit, name='results'),
     # ex: /polls/5/vote/
 ]
 
