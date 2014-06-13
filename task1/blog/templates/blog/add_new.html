@@ -1,4 +1,23 @@
 <form action=  {{ action }} method="post">{% csrf_token %}
-{{ form.as_p }}
+<!--{{ form.as_p }}-->
+
+<p><label for="id_desciption">Desciption:</label> 
+<input id="desciption" maxlength="20" name="desciption" 
+     type="text" value="{{description}}" />
+</p>
+
+<p>
+<label for="id_message">Message:</label> 
+<!--
+<input id="id_message" maxlength="100" name="message" 
+     type="text" value="{{message}}" />
+-->
+</p>
+
+<textarea id="message" name="message" rows="4" cols="50" >
+{{message}}
+</textarea>
+<p>
 <input type="submit" value="Submit" />
+</p>
 </form>

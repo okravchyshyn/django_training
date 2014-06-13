@@ -38,8 +38,10 @@ def add_new(request):
         form = BlogItem() # An unbound form
 
     return render(request, 'blog/add_new.html', {
-        'form': form,
+        #'form': form,
         'action':"/blog/add_new/",
+        'description':'',
+        'message':'',
     })
     #return HttpResponse("Add new" )
 
@@ -51,9 +53,11 @@ def edit(request, blog_id):
     if request.method == 'POST': # If the form has been submitted...
         # ContactForm was defined in the previous section
         print request.POST
+        msg = request.POST['message'] 
+        print msg
         bm.update_blog_item( blog_id
                 , request.POST['desciption']
-                , request.POST['message']
+                , msg
                 ) 
         #form = ContactForm(request.POST) # A form bound to the POST data
         return HttpResponseRedirect('/blog/') # Redirect after POST
@@ -63,14 +67,16 @@ def edit(request, blog_id):
           "desciption": d,
           "message": t,
 	}
-        form = BlogItem(dic) # An unbound form
+        #form = BlogItem(dic) # An unbound form
         #form.description = d
         #form.message = t
         print "done"
 
     return render(request, 'blog/add_new.html', {
-        'form': form,
+        #'form': form,
         'action':"/blog/" + blog_id + "/edit/",
+        'description':d,
+        'message':t,
     })
 
     #return HttpResponse(response % question_id)

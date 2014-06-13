@@ -1,12 +1,52 @@
-<p>My message: {{ msg }} 	</p>
+   <style type="text/css">
+        .main { margin-left: 25px; margin-top: 30px; }
+        .time { font-size: 0.8em; margin-top: 2px; }
+        .body { font-size: 1.1em; margin-top: 2px; }
+        .commentlink { text-align: right; }
+        .step-links a { font-size: 0.89em; }
+        .title {
+            font-size: 1.4em; margin-top: 20px; border-bottom: 1px solid #ccc;
+            padding-left: 4px; margin-left: 5px;
+        }
+        .messages { margin-left: 20px; }
+        .pagination { margin-top: 20px; margin-left: -20px; }
+    </style>
 
 
+<p>Blog </p>
+
+<div class="main">
 {% if blog_list %}
     <ul>
     {% for blog in blog_list %}
-        <li><a href="/blog/{{ blog.blog_tag }}/edit/">{{ blog.blog_desc }}</a></li>
+        <li>
+           <!--
+           <b>
+           <a href="/blog/{{ blog.blog_tag }}/edit/">{{ blog.blog_desc }}</a>
+           </b>
+           <small>
+              {{ blog.blog_date }} 
+           </small> 
+           <br>
+           <pre>
+              {{ blog.blog_text }} 
+           </pre>
+           -->
+
+           <div class="title">
+               <a href="/blog/{{ blog.blog_tag }}/edit/">{{ blog.blog_desc }}</a>
+           </div>
+           <ul>
+               <div class="time"> <small>{{ blog.blog_date }}</small></div>
+               <div class="body"> <pre>{{ blog.blog_text }} </pre></div>
+           </ul>
+
+        </li>
     {% endfor %}
     </ul>
 {% else %}
     <p>No blogs are available.</p>
 {% endif %}
+</div>
+<button type="button" onclick="location.href='/blog/add_new/'">Add</button>
+
