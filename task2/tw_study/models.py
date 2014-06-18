@@ -19,6 +19,9 @@ class Users(Base):
 
 class Words(Base):
    __tablename__ = 'words'
-   id = Column( Integer, ForeignKey(Users.id))
-   words = Column(String(20))
+   id = Column( Integer, , primary_key=True , ForeignKey(Users.id))
+   words = Column(String(20), primary_key=True)
+   result = Column( Interger) 
+   flag_new = Column(Boolean)
+
     
